@@ -58,4 +58,27 @@ int set_int(char *s, int *val);
 int get_long(char *s);
 int is_valid_num(char *s);
 
+void    simulation(t_state *state);
+int setup_philos(t_state *state);
+void    set_lr_forks(t_state *state);
+int thrds_creation(t_state *state);
+int init_gmutexes(t_state *state);
+
+size_t  time_in_ms(void);
+void    display_msg(pthread_mutex_t *write, int num, char *msg);
+void    sleep_ms(size_t ms);
+
+int check_death(t_state *state);
+int check_eat(t_state *state);
+void    simul_loop(t_state *state);
+
+void    destroy_mutexes_free(t_state *state, int end);
+void    join_thrds(t_state *state);
+void    to_destroy(t_state *state);
+
+void    *routine(void *arg);
+void    philo_sleep(t_philo *philo);
+void	philo_think(t_philo *philo);
+void    is_eating(t_philo *philo);
+
 #endif

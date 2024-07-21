@@ -6,32 +6,11 @@
 /*   By: nmellal <nmellal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 22:34:02 by nmellal           #+#    #+#             */
-/*   Updated: 2024/07/20 21:58:54 by nmellal          ###   ########.fr       */
+/*   Updated: 2024/07/21 22:23:35 by nmellal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-void    simulation(t_state *state)
-{
-    state->philos = malloc(sizeof(t_philo) * state->philos_count);
-    if (!state->philos)
-    {
-        printf(MALLOC_FAILED);
-        return ;
-    }
-    state->forks = malloc(sizeof(pthread_mutex_t) * state->philos_count);
-    if (!state->forks)
-    {
-        free(state->philos);
-        printf(MALLOC_FAILED);
-        return;
-    }
-    memset(state->philos, 0, sizeof(t_philo) * state->philos_count);
-    memset(state->forks, 0, sizeof(pthread_mutex_t) * state->philos_count);
-    state->sim.exit = 0;
-    
-}
 
 int main(int ac, char *av)
 {
@@ -49,4 +28,5 @@ int main(int ac, char *av)
         return (0);
     }
     simulation(&state);
+    return 0;
 }
