@@ -6,7 +6,7 @@
 /*   By: nmellal <nmellal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 16:06:07 by nmellal           #+#    #+#             */
-/*   Updated: 2024/07/22 16:06:08 by nmellal          ###   ########.fr       */
+/*   Updated: 2024/07/22 17:13:19 by nmellal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct s_simul
 	int				t_eat;
 	int				t_sleep;
 	int				eat_cap;
+	size_t			start_time;
 }					t_simul;
 
 typedef struct s_philo
@@ -77,7 +78,7 @@ int					thrds_creation(t_state *state);
 int					init_gmutexes(t_state *state);
 
 size_t				time_in_ms(void);
-void				display_msg(pthread_mutex_t *write, int num, char *msg);
+void				display_msg(pthread_mutex_t *write, int num, char *msg, size_t s_time);
 void				sleep_ms(size_t ms);
 
 int					check_death(t_state *state);

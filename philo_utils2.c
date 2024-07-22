@@ -6,18 +6,20 @@
 /*   By: nmellal <nmellal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 17:05:04 by nmellal           #+#    #+#             */
-/*   Updated: 2024/07/22 16:05:58 by nmellal          ###   ########.fr       */
+/*   Updated: 2024/07/22 18:30:22 by nmellal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	display_msg(pthread_mutex_t *write, int num, char *msg)
+void	display_msg(pthread_mutex_t *write, int num, char *msg, size_t s_time)
 {
 	size_t	time;
+	size_t	now;
 
 	pthread_mutex_lock(write);
-	time = time_in_ms();
+	now = time_in_ms();
+	time = now - s_time;
 	printf("%lu %d %s", time, num, msg);
 	pthread_mutex_unlock(write);
 }

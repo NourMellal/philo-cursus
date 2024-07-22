@@ -6,7 +6,7 @@
 /*   By: nmellal <nmellal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 22:55:22 by nmellal           #+#    #+#             */
-/*   Updated: 2024/07/22 16:06:35 by nmellal          ###   ########.fr       */
+/*   Updated: 2024/07/22 17:11:34 by nmellal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +77,6 @@ t_state	parse_args(int ac, char **av)
 	else
 		state.sim.eat_cap = -1;
 	state.is_valid = 1;
+	state.sim.start_time = time_in_ms();
 	return (state);
 }
