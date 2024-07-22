@@ -6,7 +6,7 @@
 /*   By: nmellal <nmellal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 19:39:44 by nmellal           #+#    #+#             */
-/*   Updated: 2024/07/22 16:05:06 by nmellal          ###   ########.fr       */
+/*   Updated: 2024/07/22 18:42:14 by nmellal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	check_death(t_state *state)
 		res = time_in_ms() - state->philos[i].last_meal;
 		if (res > (size_t)state->sim.t_die)
 		{
-			display_msg(&state->write, i + 1, DIED_MSG);
+			display_msg(&state->write, i + 1, DIED_MSG, state->sim.start_time);
 			return (1);
 		}
 		i++;
