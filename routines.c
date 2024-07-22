@@ -46,14 +46,16 @@ int	philo_eat(t_philo *philo)
 void	philo_sleep(t_philo *philo)
 {
 	if (!philo->sim->exit)
-		display_msg(philo->write, philo->num, SLEEP_MSG, philo->sim->start_time);
+		display_msg(philo->write, philo->num, SLEEP_MSG,
+			philo->sim->start_time);
 	sleep_ms(philo->sim->t_sleep);
 }
 
 void	philo_think(t_philo *philo)
 {
 	if (!philo->sim->exit)
-		display_msg(philo->write, philo->num, THINK_MSG, philo->sim->start_time);
+		display_msg(philo->write, philo->num, THINK_MSG,
+			philo->sim->start_time);
 }
 
 void	*routine(void *arg)

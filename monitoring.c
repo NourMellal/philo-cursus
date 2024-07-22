@@ -6,7 +6,7 @@
 /*   By: nmellal <nmellal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 19:39:44 by nmellal           #+#    #+#             */
-/*   Updated: 2024/07/22 18:42:14 by nmellal          ###   ########.fr       */
+/*   Updated: 2024/07/22 18:45:07 by nmellal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	simul_loop(t_state *state)
 {
 	while (1)
 	{
-		sleep_ms(5);
+		sleep_ms(2);
 		pthread_mutex_lock(&state->death);
 		if (check_death(state) || check_eat(state))
 		{
