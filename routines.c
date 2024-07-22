@@ -6,7 +6,7 @@
 /*   By: nmellal <nmellal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 20:56:07 by nmellal           #+#    #+#             */
-/*   Updated: 2024/07/22 00:29:35 by nmellal          ###   ########.fr       */
+/*   Updated: 2024/07/22 16:07:10 by nmellal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	philo_sleep(t_philo *philo)
 		display_msg(philo->write, philo->num, SLEEP_MSG);
 	sleep_ms(philo->sim->t_sleep);
 }
+
 void	philo_think(t_philo *philo)
 {
 	if (!philo->sim->exit)
@@ -57,7 +58,7 @@ void	philo_think(t_philo *philo)
 
 void	*routine(void *arg)
 {
-	t_philo *philo;
+	t_philo	*philo;
 
 	philo = arg;
 	if (philo->num % 2 == 0)

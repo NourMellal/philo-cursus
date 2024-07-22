@@ -6,7 +6,7 @@
 /*   By: nmellal <nmellal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 17:05:04 by nmellal           #+#    #+#             */
-/*   Updated: 2024/07/22 00:10:14 by nmellal          ###   ########.fr       */
+/*   Updated: 2024/07/22 16:05:58 by nmellal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,10 @@ size_t	time_in_ms(void)
 	res += time.tv_usec / 1000;
 	return (res);
 }
+
 void	sleep_ms(size_t ms)
 {
-	size_t then;
+	size_t	then;
 
 	then = time_in_ms();
 	while (time_in_ms() - then < ms)

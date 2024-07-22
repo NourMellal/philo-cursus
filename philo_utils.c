@@ -6,7 +6,7 @@
 /*   By: nmellal <nmellal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 15:25:19 by nmellal           #+#    #+#             */
-/*   Updated: 2024/07/21 23:58:55 by nmellal          ###   ########.fr       */
+/*   Updated: 2024/07/22 16:04:22 by nmellal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,10 @@ int	init_gmutexes(t_state *state)
 	}
 	return (0);
 }
+
 int	thrds_creation(t_state *state)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < state->philos_count)

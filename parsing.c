@@ -6,7 +6,7 @@
 /*   By: nmellal <nmellal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 22:55:22 by nmellal           #+#    #+#             */
-/*   Updated: 2024/07/21 23:49:44 by nmellal          ###   ########.fr       */
+/*   Updated: 2024/07/22 16:06:35 by nmellal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	is_valid_num(char *s)
 		i++;
 	return (!s[i] && i);
 }
+
 int	get_long(char *s)
 {
 	int		i;
@@ -57,7 +58,7 @@ int	set_int(char *s, int *val)
 
 t_state	parse_args(int ac, char **av)
 {
-	t_state state;
+	t_state	state;
 
 	state.is_valid = 0;
 	if (set_int(av[0], &state.philos_count) || !state.philos_count)
