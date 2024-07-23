@@ -6,7 +6,7 @@
 /*   By: nmellal <nmellal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 15:25:19 by nmellal           #+#    #+#             */
-/*   Updated: 2024/07/22 16:04:22 by nmellal          ###   ########.fr       */
+/*   Updated: 2024/07/23 18:05:14 by nmellal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ int	setup_philos(t_state *state)
 		state->philos[i].eat_count = 0;
 		state->philos[i].sim = &state->sim;
 		state->philos[i].death = &state->death;
-		state->philos[i].write = &state->write;
 		if (pthread_mutex_init(&state->forks[i], NULL))
 		{
 			printf(MUTEX_INIT_FAILED);
@@ -52,12 +51,6 @@ int	init_gmutexes(t_state *state)
 {
 	if (pthread_mutex_init(&state->death, NULL))
 	{
-		printf(MUTEX_INIT_FAILED);
-		return (1);
-	}
-	if (pthread_mutex_init(&state->write, NULL))
-	{
-		pthread_mutex_destroy(&state->death);
 		printf(MUTEX_INIT_FAILED);
 		return (1);
 	}

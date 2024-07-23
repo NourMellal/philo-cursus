@@ -6,22 +6,25 @@
 /*   By: nmellal <nmellal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 17:05:04 by nmellal           #+#    #+#             */
-/*   Updated: 2024/07/22 18:30:22 by nmellal          ###   ########.fr       */
+/*   Updated: 2024/07/23 18:34:38 by nmellal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	display_msg(pthread_mutex_t *write, int num, char *msg, size_t s_time)
+void	display_msg(t_philo *philo, char *msg, size_t s_time, int lock)
 {
 	size_t	time;
 	size_t	now;
 
-	pthread_mutex_lock(write);
+	if (lock)
+		pthread_mutex_lock(philo->death);
 	now = time_in_ms();
 	time = now - s_time;
-	printf("%lu %d %s", time, num, msg);
-	pthread_mutex_unlock(write);
+	if (philo->sim->exit == 0)
+		printf("%lu %d %s", time, philo->num, msg);
+	if (lock)
+		pthread_mutex_unlock(philo->death);
 }
 
 size_t	time_in_ms(void)
@@ -41,5 +44,5 @@ void	sleep_ms(size_t ms)
 
 	then = time_in_ms();
 	while (time_in_ms() - then < ms)
-		usleep(200);
+		usleep(750);
 }

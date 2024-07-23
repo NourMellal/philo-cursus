@@ -6,7 +6,7 @@
 /*   By: nmellal <nmellal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 16:06:07 by nmellal           #+#    #+#             */
-/*   Updated: 2024/07/22 17:13:19 by nmellal          ###   ########.fr       */
+/*   Updated: 2024/07/23 18:17:09 by nmellal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@
 # define MALLOC_FAILED "MALLOC failed, can't start simulation.\n"
 # define THREAD_INIT_FAILED "Thread creation failed, can't start simulation.\n"
 # define THREAD_JOIN_FAILED "Thread joining failed, can't start simulation.\n"
-# define FORK_MSG "has taken a fork\n"
+# define L_FORK_MSG "has taken a L_fork\n"
+# define R_FORK_MSG "has taken a R_fork\n"
 # define EAT_MSG "is eating\n"
 # define SLEEP_MSG "is sleeping\n"
 # define THINK_MSG "is thinking\n"
@@ -45,7 +46,6 @@ typedef struct s_philo
 {
 	int				num;
 	pthread_t		thread;
-	pthread_mutex_t	*write;
 	pthread_mutex_t	*death;
 	pthread_mutex_t	*l_fork;
 	pthread_mutex_t	*r_fork;
@@ -62,7 +62,6 @@ typedef struct s_state
 	t_philo			*philos;
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	death;
-	pthread_mutex_t	write;
 	t_simul			sim;
 }					t_state;
 
@@ -78,8 +77,7 @@ int					thrds_creation(t_state *state);
 int					init_gmutexes(t_state *state);
 
 size_t				time_in_ms(void);
-void				display_msg(pthread_mutex_t *write, int num, char *msg,
-						size_t s_time);
+void	display_msg(t_philo *philo, char *msg, size_t s_time, int lock);
 void				sleep_ms(size_t ms);
 
 int					check_death(t_state *state);

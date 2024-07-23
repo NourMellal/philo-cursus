@@ -6,7 +6,7 @@
 /*   By: nmellal <nmellal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 19:39:44 by nmellal           #+#    #+#             */
-/*   Updated: 2024/07/22 18:45:07 by nmellal          ###   ########.fr       */
+/*   Updated: 2024/07/23 18:06:47 by nmellal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ int	check_death(t_state *state)
 		res = time_in_ms() - state->philos[i].last_meal;
 		if (res > (size_t)state->sim.t_die)
 		{
-			display_msg(&state->write, i + 1, DIED_MSG, state->sim.start_time);
+			display_msg(&state->philos[i], DIED_MSG, state->sim.start_time, 0);
+			state->sim.exit = 1;
 			return (1);
 		}
 		i++;
@@ -50,7 +51,7 @@ void	simul_loop(t_state *state)
 {
 	while (1)
 	{
-		sleep_ms(2);
+		sleep_ms(5);
 		pthread_mutex_lock(&state->death);
 		if (check_death(state) || check_eat(state))
 		{

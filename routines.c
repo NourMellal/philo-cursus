@@ -6,7 +6,7 @@
 /*   By: nmellal <nmellal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 20:56:07 by nmellal           #+#    #+#             */
-/*   Updated: 2024/07/22 17:15:17 by nmellal          ###   ########.fr       */
+/*   Updated: 2024/07/23 18:19:58 by nmellal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	is_eating(t_philo *philo)
 	pthread_mutex_lock(philo->death);
 	if (!philo->sim->exit)
 	{
-		display_msg(philo->write, philo->num, EAT_MSG, philo->sim->start_time);
+		display_msg(philo, EAT_MSG, philo->sim->start_time, 0);
 		philo->last_meal = time_in_ms();
 		philo->eat_count++;
 		pthread_mutex_unlock(philo->death);
@@ -32,30 +32,24 @@ void	is_eating(t_philo *philo)
 int	philo_eat(t_philo *philo)
 {
 	pthread_mutex_lock(philo->l_fork);
-	if (!philo->sim->exit)
-		display_msg(philo->write, philo->num, FORK_MSG, philo->sim->start_time);
+	display_msg(philo, L_FORK_MSG, philo->sim->start_time, 1);
 	if (philo->r_fork == philo->l_fork)
 		return (pthread_mutex_unlock(philo->l_fork) || 1);
 	pthread_mutex_lock(philo->r_fork);
-	if (!philo->sim->exit)
-		display_msg(philo->write, philo->num, FORK_MSG, philo->sim->start_time);
+	display_msg(philo, R_FORK_MSG, philo->sim->start_time, 1);
 	is_eating(philo);
 	return (0);
 }
 
 void	philo_sleep(t_philo *philo)
 {
-	if (!philo->sim->exit)
-		display_msg(philo->write, philo->num, SLEEP_MSG,
-			philo->sim->start_time);
+	display_msg(philo, SLEEP_MSG, philo->sim->start_time, 1);
 	sleep_ms(philo->sim->t_sleep);
 }
 
 void	philo_think(t_philo *philo)
 {
-	if (!philo->sim->exit)
-		display_msg(philo->write, philo->num, THINK_MSG,
-			philo->sim->start_time);
+	display_msg(philo, THINK_MSG, philo->sim->start_time, 1);
 }
 
 void	*routine(void *arg)
