@@ -77,7 +77,8 @@ int					thrds_creation(t_state *state);
 int					init_gmutexes(t_state *state);
 
 size_t				time_in_ms(void);
-void	display_msg(t_philo *philo, char *msg, size_t s_time, int lock);
+void				display_msg(t_philo *philo, char *msg, size_t s_time,
+						int lock);
 void				sleep_ms(size_t ms);
 
 int					check_death(t_state *state);
